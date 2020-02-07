@@ -16,6 +16,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.gson.JsonObject
 import com.koushikdutta.ion.Ion
 import de.nicolaiweitkemper.shoppingtool.data.Product
+import io.sentry.Sentry
+import io.sentry.android.AndroidSentryClientFactory
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import kotlin.concurrent.thread
@@ -29,6 +31,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Sentry.init(
+            "https://d196bf363f7e4b9f80e945aa237f3112@sentry.io/2319687",
+            AndroidSentryClientFactory(this)
+        )
+
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
